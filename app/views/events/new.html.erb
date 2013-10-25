@@ -1,0 +1,49 @@
+<div class="block">	
+	<div class="secondary-navigation">
+		<ul class="wat-cf">
+			<li><a href="/calendar">Calendar</a></li>
+			<li class="active"><a href="/events/new">New Memory</a></li>
+			<li><a href="/events/">Events</a></li>
+		</ul>
+	</div>
+	<div class = "content">
+		<h2 class = "title">New Schedule</h2>
+		<div class = "inner">
+			<div class = "form">
+				<%= form_for @event do |f| %>
+					<% if @event.errors.any? %>
+						<p>	
+						<div class="flash">
+							<div class="message error">
+								<p>誤りがあります:入力がされていない？日付が誤ってる？</p>
+
+							</div>
+						</div>
+						</p>
+					<% end %>
+				<div class = "group">  
+					<%= f.label :"New Event", :class => "label" %>
+					<%= f.text_field :name, :class => "text_field"%>
+				</div>
+				<div class = "group">
+					<%= f.label :"Start Date", :class => "label"%>
+					<%= f.date_field :start_at %>
+				</div>
+				<div class = "group">
+					<%= f.label :"End Date", :class => "label"%>
+					<%= f.date_field :end_at %>
+				</div>
+				<div class = "group">
+					<%= f.label :"Details", :class => "label"%>
+					<%= f.text_area :body, :class => "text_area" %>
+				</div>
+				</div>
+					<div class = "submit">	
+					<%= f.submit %>
+				</div>
+				<% end %>
+			</div>
+	</div>
+</div>
+
+
