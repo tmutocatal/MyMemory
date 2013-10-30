@@ -1,16 +1,28 @@
 class EventsController < ApplicationController
 	def index
-		@user = current_user
-		@events = Event.find(:all, :order => "start_at")
+            if !user_signed_in?
+                redirect_to new_user_session_path
+            else
+		#@user = current_user
+		@events = current_user.events.find(:all, :order => "start_at")
+	    end
 	end
 	
 	def new
+            if !user_signed_in?
+                redirect_to new_user_session_path
+            else
 		@event = Event.new
+	    end
 	end
 
 	def show
+            if !user_signed_in?
+                redirect_to new_user_session_path
+            else
 		@event = Event.find(params[:id])
 		@events = Event.find(:all, :order => "start_at DESC")
+	    end
 	end
 
 	def create

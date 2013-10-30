@@ -16,8 +16,7 @@
 					<th>End</th>
 					<th>Details</th>
 				</tr>
-			
-				<% for event in @user.events %>
+				<% @events.each do |event| %>
 				<tbody>
 					<tr>
 						<td><%= link_to event.name, controller:"events", action:"show", id:event.id %></td>
