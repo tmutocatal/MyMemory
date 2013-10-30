@@ -17,7 +17,7 @@
 					<th>Details</th>
 				</tr>
 			
-				<% @events.each do |event| %>
+				<% for event in @user.events %>
 				<tbody>
 					<tr>
 						<td><%= link_to event.name, controller:"events", action:"show", id:event.id %></td>

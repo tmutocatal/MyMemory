@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
 	def index
+		@user = current_user
 		@events = Event.find(:all, :order => "start_at")
 	end
 	
@@ -13,7 +14,7 @@ class EventsController < ApplicationController
 	end
 
 	def create
-		@event = Event.new(params[:event].permit(:name, :start_at, :end_at, :body))
+		@event = current_user.events.new(params[:event].permit(:name, :start_at, :end_at, :body))
 		if @event.save
 			redirect_to calendar_path
 		else
